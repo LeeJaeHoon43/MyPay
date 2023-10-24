@@ -13,44 +13,30 @@ plugins {
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 
-java {
-    sourceCompatibility = '17'
-}
-
-apply plugin: 'java'
-apply plugin: 'java-library'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+subprojects {
+    compileJava {
+        sourceCompatibility = 17
+        targetCompatibility = 17
     }
-}
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-repositories {
-    mavenCentral()
-}
+    repositories {
+        mavenCentral()
+    }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
-    implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-    testImplementation 'com.tngtech.archunit:archunit:1.0.1'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
-    implementation group: 'org.jetbrains', name: 'annotations', version: '23.0.0'
-    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
-
-    runtimeOnly 'com.h2database:h2'
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+        implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+        testImplementation 'com.tngtech.archunit:archunit:1.0.1'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        runtimeOnly 'mysql:mysql-connector-java'
+    }
 }
 
 test {

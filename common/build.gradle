@@ -6,10 +6,6 @@ plugins {
 
 group = 'com.mypay.common'
 
-java {
-    sourceCompatibility = '17'
-}
-
 repositories {
     mavenCentral()
 }
