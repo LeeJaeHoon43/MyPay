@@ -10,10 +10,10 @@ services:
       - ./db/initdb.d:/docker-entrypoint-initdb.d
     env_file: .env
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       - TZ=Asia/Seoul
-      - MYSQL_ROOT_PASSWORD=ljh@1067611
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_USER=mysqluser
       - MYSQL_PASSWORD=mysqlpw
 
